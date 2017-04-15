@@ -7,8 +7,6 @@ import java.lang.annotation.Target;
 
 //Informa que a anotação será lida em tempo de execução
 @Retention(RetentionPolicy.RUNTIME)//
-//Pode ser aplicado em um atributo ou propriedade
-@Target(ElementType.FIELD)
 public @interface Tabela {
 	String value() default "_notset";
 }
