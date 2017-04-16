@@ -1,6 +1,6 @@
 package br.univel;
 
- @Tabela("CAD_CALOPSITA")//Nome da tabela no banco
+@Tabela("CAD_CALOPSITA")//Nome da tabela no banco
 public class Calopsita {
 	 
 	 @Coluna(pk=true)//Coluna id vai ser Primary key

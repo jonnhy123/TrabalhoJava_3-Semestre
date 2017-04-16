@@ -7,6 +7,8 @@ import java.lang.annotation.Target;
 
 //Informa que a anotação será lida em tempo de execução
 @Retention(RetentionPolicy.RUNTIME)//
+@Target(ElementType.TYPE)
+//ElementType.TYPE será uma anotação de classe, interface ou enum
 public @interface Tabela {
 	String value() default "_notset";
 }
