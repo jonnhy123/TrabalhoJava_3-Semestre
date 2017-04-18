@@ -10,6 +10,7 @@ import java.lang.annotation.Target;
 //Pode ser aplicado em um atributo ou propriedade
 @Target(ElementType.FIELD)
 public @interface Coluna {
-	String nome() default "_notset";
+	String nome() default "";
+	String tipo() default "";
 	boolean pk() default false;
 }
