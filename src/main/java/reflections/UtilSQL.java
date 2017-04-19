@@ -163,7 +163,81 @@ public class UtilSQL {
 		System.out.println("SQL GERADO: \n"+ strSql);
 		return sb.toString();
 	}
+	
+	public String DELETETABLE(Object obj, int id){
+		StringBuilder sb = new StringBuilder();
+		Class<?> clazz = obj.getClass();
+		
+		sb.append("DELETE FROM "+nomeTabela(obj)+" WHERE ");
+		String nomeColuna;
+		for(Field f: clazz.getDeclaredFields()){
+			f.setAccessible(true);
+			Coluna anotacaoColuna = f.getAnnotation(Coluna.class);
+				if (anotacaoColuna.pk() == true) {
+					sb.append(nomeColuna(f,anotacaoColuna)+ " = ");
+					sb.append(id+";");
+				}
+			}
+		
+		String drop = sb.toString();
+		System.out.println("SQL executado: \n"+drop);
+		return sb.toString();
+	}
+	
+//		field.getType().equals(int.class)
+		
+		
+		/*
+		Field[] atributos = clazz.getDeclaredFields();
+		for (int i = 0; i < atributos.length; i++) {
+			Field field = atributos[i];
+			field.setAccessible(true);
+			Coluna anotacaoColuna = field.getAnnotation(Coluna.class);
+			if (anotacaoColuna.pk() == true) {
+				if (field.getType().equals(int.class)) {
+					sb.append(obj+";");
+				}else{
+					System.err.println("Favor, informe parâmetro do tipo inteiro!!!");
+				}
+			}else{
+				System.err.println("Favor, informe parêmetro do tipo pk()!!!");
+			}
+		}
+		*/
+
+	private String nomeTabela(Object obj) {
+		Class<?> clazz =  obj.getClass();
+	
+		//Cria o nome da tabela com base na anotação.
+		String nomeTabela;
+		if(clazz.isAnnotationPresent(Tabela.class)){
+			Tabela anotacaoTabela = clazz.getAnnotation(Tabela.class);
+			nomeTabela = anotacaoTabela.value().toUpperCase();
+		}else{
+			nomeTabela = clazz.getSimpleName().toUpperCase();
+		}
+		
+		return nomeTabela;
+	}
+	
+	private String nomeColuna(Field field, Coluna anotacaoColuna) {
+		String nomeColuna;
+		if(field.isAnnotationPresent(Coluna.class)){
+			if(anotacaoColuna.nome().isEmpty()){
+				nomeColuna = field.getName().toLowerCase();
+			}else{
+				nomeColuna = anotacaoColuna.nome();
+			}
+		}else{
+			nomeColuna = field.getName().toLowerCase();
+		}		
+		return nomeColuna;
+		
+	}
+	
 }
+
+
 //		
 //		PreparedStatement ps;
 //		try {

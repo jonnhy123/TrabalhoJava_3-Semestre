@@ -64,4 +64,17 @@ public class Connection {
 			e.printStackTrace();
 		}
 	}
+	
+	public void DELETETABLE(Object obj, int id){
+		String str = sql.DELETETABLE(obj, id);
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(str);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 }
