@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 //ElementType.TYPE será uma anotação de classe, interface ou enum
 public @interface Tabela {
-	String value() default "_notset";
+	String value() default "";
 }

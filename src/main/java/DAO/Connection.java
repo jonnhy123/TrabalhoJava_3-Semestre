@@ -3,25 +3,24 @@ package DAO;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
+
+import reflections.UtilSQL;
 
 public class Connection {
 
 	private java.sql.Connection con;
+	UtilSQL sql = new UtilSQL();
 	
-	private void conecta(){
+	public void conecta(){
 		String url  = "jdbc:postgresql://localhost:5432/postgres", 
 			   user = "postgres", 
-			   pass = "univel",
-			   driver = "postgresql-9.1-901-1.jdbc4.jar";
-				
+			   pass = "univel";				
 		try {
-			Class.forName(driver);
 			con = DriverManager.getConnection(url,user,pass);
-			PreparedStatement ps; 
+			System.out.println("Conectado com sucesso no banco!!!");
 		} catch (SQLException e) {
 			System.err.println("ERRO NO METODO \"CONECTA()\" DA CLASSE Connection\n");
-		} catch (ClassNotFoundException e) {
-			System.err.println("ERRO NO DRIVER DO METODO \"CONECTA()\" DA CLASSE Connection\n");
 		}
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
@@ -41,4 +40,28 @@ public class Connection {
 		}
 	}
 	
+	public void CREATE(Object obj){
+		String str = sql.CREAE_TABLE(obj);
+		PreparedStatement ps;
+		
+		try {
+			ps = con.prepareStatement(str);
+			ps.executeUpdate();
+			System.out.println("CREATE TABLE SUCESS FULL");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void INSERTINTO(Object obj){
+		String str = sql.INSERTINTO(obj);
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(str);
+			ps.executeUpdate();
+			System.out.println("Dados inseridos na tabela com sucesso");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

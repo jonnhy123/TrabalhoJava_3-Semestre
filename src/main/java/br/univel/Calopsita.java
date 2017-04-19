@@ -3,10 +3,10 @@ package br.univel;
 @Tabela("CALOPSITA")//Nome da tabela no banco
 public class Calopsita {
 	 
-	 @Coluna(pk=true)//Coluna id vai ser Primary key
+	 @Coluna(pk=true, nome="id_cal")//Coluna id vai ser Primary key
 	 private int id;
 	 
-	 @Coluna(nome="CAL_NOME")//Coluna CAL_NOME
+	 @Coluna(nome="nome_cal")//Coluna CAL_NOME
 	 private String nome;
 
 	public Calopsita(int id, String nome) {
@@ -19,4 +19,37 @@ public class Calopsita {
 	public void setId(int id) {this.id = id;}
 	public String getNome() {return nome;}
 	public void setNome(String nome) {this.nome = nome;}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Calopsita other = (Calopsita) obj;
+		if (id != other.id)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Calopsita [id=" + id + ", nome=" + nome + "]";
+	}
 }
