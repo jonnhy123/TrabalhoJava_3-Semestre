@@ -57,11 +57,12 @@ public class TestDrop extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			
 			Connection con = new Connection();
-			int id = 1;
 			String nome = "tesing";
+			con.conecta();
+			int id = Integer.parseInt(textField.getText());
 			Calopsita c = new Calopsita(id, nome);
-			int num = Integer.parseInt(textField.getText());
-			con.DELETETABLE(c,num);
+			con.INSERTINTO(c);
+			con.DELETETABLE(c,id);
 	
 			}
 		});
