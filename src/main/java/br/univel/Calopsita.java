@@ -9,6 +9,10 @@ public class Calopsita {
 	 @Coluna(nome="nome_cal")//Coluna CAL_NOME
 	 private String nome;
 
+	public Calopsita () {
+		
+	} 
+	 
 	public Calopsita(int id, String nome) {
 		super();
 		this.id = id;

@@ -12,6 +12,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 
 public class telaTeste extends JFrame {
 
@@ -47,9 +48,9 @@ public class telaTeste extends JFrame {
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		JLabel lblNewLabel = new JLabel("New label_1");
@@ -97,11 +98,47 @@ public class telaTeste extends JFrame {
 		
 		JButton btnNewButton_2 = new JButton("New button");
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
+		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton_2.gridwidth = 2;
 		gbc_btnNewButton_2.gridx = 0;
 		gbc_btnNewButton_2.gridy = 3;
 		contentPane.add(btnNewButton_2, gbc_btnNewButton_2);
+		
+		JButton btnNewButton = new JButton("New button");
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
+		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNewButton.gridwidth = 2;
+		gbc_btnNewButton.gridx = 0;
+		gbc_btnNewButton.gridy = 4;
+		contentPane.add(btnNewButton, gbc_btnNewButton);
+		
+		JButton btnNewButton_3 = new JButton("New button");
+		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
+		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 0);
+		gbc_btnNewButton_3.gridwidth = 2;
+		gbc_btnNewButton_3.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNewButton_3.gridx = 0;
+		gbc_btnNewButton_3.gridy = 5;
+		contentPane.add(btnNewButton_3, gbc_btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("New button");
+		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
+		gbc_btnNewButton_4.insets = new Insets(0, 0, 5, 0);
+		gbc_btnNewButton_4.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNewButton_4.gridwidth = 2;
+		gbc_btnNewButton_4.gridx = 0;
+		gbc_btnNewButton_4.gridy = 6;
+		contentPane.add(btnNewButton_4, gbc_btnNewButton_4);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridwidth = 2;
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 0;
+		gbc_scrollPane.gridy = 7;
+		contentPane.add(scrollPane, gbc_scrollPane);
 	}
 
 }
